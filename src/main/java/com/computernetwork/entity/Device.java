@@ -25,10 +25,10 @@ public class Device {
     private String buildingName;
 
     @Column(name = "floor_number", nullable = false)
-    private String floorNumber;
+    private Integer floorNumber;
 
     @Column(name = "room_number")
-    private String roomNumber;
+    private String roomName;
 
     @Column(name = "sensor_type", nullable = false)
     @Enumerated(EnumType.STRING)
@@ -41,7 +41,8 @@ public class Device {
     public enum DeviceSensorType {
         TEMPERATURE,
         HUMIDITY_RATE,
-        SMOKE
+        SMOKE,
+        ALARM
     }
 
     public enum DeviceStatus {

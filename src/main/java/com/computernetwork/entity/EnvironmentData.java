@@ -18,8 +18,7 @@ public class EnvironmentData {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @ManyToOne
-    @JoinColumn(name = "device_id")
+    @OneToOne
     private Device device;
 
     @Column(name = "data_type")

@@ -26,8 +26,32 @@ public class DeviceServiceImpl implements IDeviceService {
     }
 
     @Override
-    public List<Device> getTriggeredDevice() {
-        return deviceRepository.findByStatus("TRIGGERED");
+    public Device getDeviceById(Integer id) {
+        return deviceRepository.findById(id).orElse(null);
+    }
+
+    @Override
+    public List<Device> getDeviceByBuildingAndFloorAndType(String buildingName, Integer floorNumber, String sensorType) {
+
+        if (buildingName != null && floorNumber != null && sensorType != null){
+            return deviceRepository.findByBuildingAndFloorAndType(buildingName, floorNumber, sensorType);
+        } else if (buildingName != null && floorNumber != null && sensorType == null) {
+            return deviceRepository.findByBuildingAndFloor(buildingName, floorNumber);
+        }else if (buildingName != null && floorNumber == null && sensorType == null){
+            return deviceRepository.findByBuilding(buildingName);
+        }else {
+            return null;
+        }
+    }
+
+    @Override
+    public List<Device> getDeviceByType(String sensorType) {
+        return deviceRepository.findByType(sensorType);
+    }
+
+    @Override
+    public void deleteDeviceById(Integer id) {
+        deviceRepository.deleteById(id);
     }
 
 }

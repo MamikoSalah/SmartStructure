@@ -9,5 +9,17 @@ import java.util.List;
 @Repository
 public interface DeviceRepository extends JpaRepository<Device, Integer> {
 
+    List<Device> findByBuildingAndFloorAndType(String buildingName, Integer floorNumber, String sensorType);
+
+    List<Device> findByBuildingAndFloor(String buildingName, Integer floorNumber);
+
+    List<Device> findByType(String sensorType);
+
+    List<Device> findByBuilding(String building);
+
+    List<Device> findByFloor(Integer floorNumber);
+
     List<Device> findByStatus(String status);
+
+
 }

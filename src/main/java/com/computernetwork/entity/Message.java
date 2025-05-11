@@ -5,7 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDateTime;
+import java.sql.Timestamp;
 
 @Entity
 @Table(name = "message")
@@ -22,11 +22,7 @@ public class Message {
     private String messageContent;
 
     @Column(name = "sent_at")
-    private LocalDateTime sentAt;
-
-    @ManyToOne
-    @JoinColumn(name = "sender")
-    private Device sender;
+    private Timestamp sentAt;
 
     @ManyToOne
     @JoinColumn(name = "receiver")
